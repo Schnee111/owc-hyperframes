@@ -1,0 +1,9 @@
+# Build artifacts
+renders/
+snapshots/
+node_modules/
+.tmp/
+
+# Local state
+*.log
+.DS_Store
