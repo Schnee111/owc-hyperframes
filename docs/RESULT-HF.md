@@ -31,7 +31,10 @@ n 900-1450 rpm, P 18.4-30 kW, ETA 35%.
 3. Probe geometri (scripts/probe.js, headless): 0 overlap caption-vs-teks-dunia pada t=9,20,40,53,105,118,130,148
 4. ffprobe: 1920x1080 30fps 5400f 180.00s yuv420p AAC 48k stereo
 5. decode null: bersih
-6. Determinisme: render x2, sha256 dibandingkan
+6. Determinisme: render x2 — sha DIVERGEN (r1 8f1b4685… vs r2 84a5fad6…, selisih ~26KB/120MB).
+   Forensik level frame: 1491/5400 frame raw md5 berbeda, TAPI PSNR r1-vs-r2 y:57.45dB
+   (min 47.5dB) = noise kuantisasi x264, tak kasat mata. Kesimpulan: visual-identical,
+   byte-divergen karena nondeterminisme screenshot-capture software-GL. Bukan gate merge.
 
 ## Isu teratasi selama build (critic loop)
 - lint: audio tanpa id = SENYAP saat render -> id unik semua clip
